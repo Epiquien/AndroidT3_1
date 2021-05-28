@@ -1,6 +1,7 @@
 package com.example.practicat3_1.Adapters;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,7 +19,10 @@ import java.util.List;
 
 public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.PalabraViewHolder> {
 
+
     List<Anime> animes;
+
+
 
     public AnimeAdapter(List<Anime> animes)
     {
@@ -29,6 +33,8 @@ public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.PalabraViewH
     public PalabraViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_anime, parent, false);
+
+
 
         return new PalabraViewHolder(view);
     }
@@ -48,12 +54,27 @@ public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.PalabraViewH
         idNombre.setText(anime.Nombre);
         idDescripcion.setText(anime.Descripcion);
         idImagen2.setImageResource(anime.Favorito);
+
+        idImagen2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN)
+                {
+                    idImagen2.setImageResource(R.drawable.estrellanegra);
+                }
+                else if (event.getAction() == MotionEvent.ACTION_UP){
+                    idImagen2.setImageResource(R.drawable.estrellablanca);
+                }
+                return true;
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return animes.size();
     }
+
 
     public class PalabraViewHolder extends RecyclerView.ViewHolder{
 

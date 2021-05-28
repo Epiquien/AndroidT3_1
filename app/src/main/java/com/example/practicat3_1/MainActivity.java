@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.practicat3_1.Adapters.AnimeAdapter;
 import com.example.practicat3_1.Entity.Anime;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
         AnimeAdapter adapter= new AnimeAdapter(animes);
+
 
         rv.setAdapter(adapter);
 
